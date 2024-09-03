@@ -1,6 +1,6 @@
 # API de Gestão de Tarefas
 
-A API de Gestão de Tarefas foi desenvolvida para facilitar o gerenciamento completo de tarefas. Com esta API, os usuários podem realizar as operações de CRUD (Criar, Ler, Atualizar e Excluir) sobre tarefas, permitindo uma gestão eficiente e centralizada das mesmas.
+A API de Gestão de Tarefas foi desenvolvida para facilitar o gerenciamento completo de tarefas. Com esta API, os usuários podem realizar as operações de CRUD (Criar, Ler, Atualizar e Excluir) sobre tarefas.
 
 ## Como Executar a API
 
