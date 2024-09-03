@@ -21,7 +21,7 @@ Para executar a API de Gestão de Tarefas em sua máquina local, siga as instru�
 3. **Navegue até o Projeto API**
    - Dentro do diretório principal, navegue até a pasta específica que contém o projeto da API:
      ```bash
-     cd caminho/para/o/projeto/API
+     cd API
      ```
 
 4. **Execute a Aplicação**
