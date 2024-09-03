@@ -30,6 +30,7 @@ Para executar a API de Gestão de Tarefas em sua máquina local, siga as instru�
      dotnet run
      ```
    - A aplicação será iniciada e estará disponível para receber requisições HTTP.
+   - Para acessar a documentação da API, acesse o endpoint "/swagger"
 
 ## Contato
 
