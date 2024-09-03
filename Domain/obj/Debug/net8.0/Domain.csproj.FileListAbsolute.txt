@@ -1,0 +1,12 @@
+/Users/labes/APIGestaoDeTarefas/Domain/bin/Debug/net8.0/Domain.deps.json
+/Users/labes/APIGestaoDeTarefas/Domain/bin/Debug/net8.0/Domain.dll
+/Users/labes/APIGestaoDeTarefas/Domain/bin/Debug/net8.0/Domain.pdb
+/Users/labes/APIGestaoDeTarefas/Domain/obj/Debug/net8.0/Domain.csproj.AssemblyReference.cache
+/Users/labes/APIGestaoDeTarefas/Domain/obj/Debug/net8.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/labes/APIGestaoDeTarefas/Domain/obj/Debug/net8.0/Domain.AssemblyInfoInputs.cache
+/Users/labes/APIGestaoDeTarefas/Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs
+/Users/labes/APIGestaoDeTarefas/Domain/obj/Debug/net8.0/Domain.csproj.CoreCompileInputs.cache
+/Users/labes/APIGestaoDeTarefas/Domain/obj/Debug/net8.0/Domain.dll
+/Users/labes/APIGestaoDeTarefas/Domain/obj/Debug/net8.0/refint/Domain.dll
+/Users/labes/APIGestaoDeTarefas/Domain/obj/Debug/net8.0/Domain.pdb
+/Users/labes/APIGestaoDeTarefas/Domain/obj/Debug/net8.0/ref/Domain.dll
