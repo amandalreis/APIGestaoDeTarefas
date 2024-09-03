@@ -9,7 +9,7 @@ Para executar a API de Gestão de Tarefas em sua máquina local, siga as instru�
 1. **Clone o Repositório**
    - Faça o download ou clone o repositório a partir do GitHub usando o comando:
      ```bash
-     git clone https://github.com/seu-usuario/APIGestaoDeTarefas.git
+     git clone https://github.com/amandalreis/APIGestaoDeTarefas.git
      ```
   
 2. **Acesse o Diretório da API**
