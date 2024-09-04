@@ -15,3 +15,4 @@
 /Users/labes/APIGestaoDeTarefas/Infra/obj/Debug/net8.0/Infra.pdb
 /Users/labes/APIGestaoDeTarefas/Infra/obj/Debug/net8.0/Infra.genruntimeconfig.cache
 /Users/labes/APIGestaoDeTarefas/Infra/obj/Debug/net8.0/ref/Infra.dll
+/Users/labes/APIGestaoDeTarefas/Infra/obj/Debug/net8.0/Infra.sourcelink.json
