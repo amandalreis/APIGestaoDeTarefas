@@ -15,16 +15,10 @@ Para executar a API de Gestão de Tarefas em sua máquina local, siga as instru�
 2. **Acesse o Diretório da API**
    - Abra o terminal (cmd, PowerShell, ou terminal integrado do VS Code) e navegue até o diretório do projeto:
      ```bash
-     cd APIGestaoDeTarefas
+     cd caminho/para/APIGestaoDeTarefas/API
      ```
 
-3. **Navegue até o Projeto API**
-   - Dentro do diretório principal, navegue até a pasta específica que contém o projeto da API:
-     ```bash
-     cd API
-     ```
-
-4. **Execute a Aplicação**
+3. **Execute a Aplicação**
    - No diretório do projeto da API, execute o seguinte comando para iniciar a aplicação:
      ```bash
      dotnet run
