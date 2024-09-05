@@ -54,15 +54,10 @@ public class AuthRepository : IAuthRepository
 
         if (resultado.Succeeded)
         {
-            var usuario = await _userManager.FindByEmailAsync(loginUser.Email!);
+            var usuario = await _userManager.FindByEmailAsync(loginUser.Email!) ?? throw new NotFoundException("O usuário não existe.");;
 
-            if (usuario != null)
-            {
-                var token = GerarJwt(usuario.Id);
-                return token;
-            }
-
-            throw new NotFoundException("O usuário não existe.");
+            var token = GerarJwt(usuario.Id);
+            return token;
         }
 
         throw new UnauthorizedAccessException("Credenciais inválidas.");
