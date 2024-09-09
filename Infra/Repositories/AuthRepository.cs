@@ -35,15 +35,15 @@ public class AuthRepository : IAuthRepository
             EmailConfirmed = true
         };
 
-        var resultado = await _userManager.CreateAsync(usuario, registerUser.Senha!);
+        var resultadoCriacaoUsuario = await _userManager.CreateAsync(usuario, registerUser.Senha!);
 
-        if (resultado.Succeeded)
+        if (resultadoCriacaoUsuario.Succeeded)
         {
             await _signInManager.SignInAsync(usuario, false);
-            return GerarJwt(usuario.Id);
+            return await GerarJwt(usuario.Id);
         }
 
-        var erro = resultado.Errors.FirstOrDefault()!;
+        var erro = resultadoCriacaoUsuario.Errors.FirstOrDefault()!;
         if(erro.Code.Contains("Password")) throw new BadRequestException(erro.Description);
         throw new Exception($"Ocorreu um erro ao registrar usuário: {erro.Description}.");
     }
@@ -56,11 +56,29 @@ public class AuthRepository : IAuthRepository
         {
             var usuario = await _userManager.FindByEmailAsync(loginUser.Email!) ?? throw new NotFoundException("O usuário não existe.");;
 
-            var token = GerarJwt(usuario.Id);
+            var token = await GerarJwt(usuario.Id);
             return token;
         }
 
         throw new UnauthorizedAccessException("Credenciais inválidas.");
+    }
+
+    public async Task AtribuirAdminAoUsuario(IdentityUser usuario)
+    {
+        var resultadoAtribuirRoleAdmin = await _userManager.AddToRoleAsync(usuario, "Admin");
+        if(!resultadoAtribuirRoleAdmin.Succeeded) throw new Exception($"Ocorreu um erro ao atribuir role admin ao usuário: {resultadoAtribuirRoleAdmin.Errors.FirstOrDefault()}");
+    }
+
+    public async Task<IdentityUser?> ObterUsuarioExistente(string email)
+    {
+        return await _userManager.FindByEmailAsync(email);
+    }
+
+    public async Task<bool> ValidarUsuarioAdmin(IdentityUser usuario)
+    {
+        var roles = await _userManager.GetRolesAsync(usuario);
+        if(roles.Contains("Admin")) return true;
+        return false;
     }
 
     public bool ValidarContextoExistente()
@@ -68,21 +86,30 @@ public class AuthRepository : IAuthRepository
         return _context.Users != null;
     }
 
-    private object GerarJwt(string usuarioId)
+    private async Task<object> GerarJwt(string usuarioId)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_jwtSettings.Segredo!);
+        var usuario = await _userManager.FindByIdAsync(usuarioId);
+        var roles = await _userManager.GetRolesAsync(usuario!);
         
+        var claims = new List<Claim>()
+        {
+            new Claim(ClaimTypes.NameIdentifier, usuarioId),
+        };
+
+        foreach(var role in roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
+
         var token = tokenHandler.CreateToken(new SecurityTokenDescriptor 
         {
             Issuer = _jwtSettings.Emissor,
             Audience = _jwtSettings.Audiencia,
             Expires = DateTime.UtcNow.AddHours(_jwtSettings.ExpiracaoHoras),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, usuarioId),
-            })
+            Subject = new ClaimsIdentity(claims)
         });
 
         var encodedToken = tokenHandler.WriteToken(token);
