@@ -10,9 +10,25 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-Dependencias.ConfigurarServices(builder.Services); //Configurando injeção de dependências.
+Dependencias.ConfigurarInjecaoDependencias(builder.Services);
 
 builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Development", builder =>
+        builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+    
+    options.AddPolicy("Production", builder =>
+        builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => 
 {
@@ -81,6 +97,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("Development");
+} else
+{
+    app.UseCors("Production");
 }
 
 app.UseHttpsRedirection();

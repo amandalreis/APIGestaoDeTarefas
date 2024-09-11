@@ -10,7 +10,7 @@ namespace Infra;
 
 public static class Dependencias 
 {
-    public static void ConfigurarServices(IServiceCollection services)
+    public static void ConfigurarInjecaoDependencias(IServiceCollection services)
     {
         //Services
         services.AddScoped<ITarefaService, TarefaService>();
