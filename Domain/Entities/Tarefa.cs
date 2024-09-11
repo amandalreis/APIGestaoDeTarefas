@@ -10,7 +10,7 @@ public class Tarefa
     public string Id { get; set; }
 
     [ForeignKey("Usuario")]
-    public string? UsuarioId { get; set; }
+    public string UsuarioId { get; set; }
 
     [Required(ErrorMessage = "O campo {0} é obrigatório.")]
     [MaxLength(250)]

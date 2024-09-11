@@ -3,7 +3,6 @@ using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Domain.Entities.ViewModels;
 
 namespace API.Controllers;
