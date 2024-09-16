@@ -33,7 +33,7 @@ public class Tarefa
 
     public DateTime? ConcluidaEm { get; set; }
 
-    public Tarefa(string id, string usuarioId, string titulo, string descricao, PrioridadeTarefa prioridade, StatusTarefa status, DateTime previstaPara, DateTime? concluidaEm)
+    public Tarefa(string? id, string usuarioId, string titulo, string descricao, PrioridadeTarefa prioridade, StatusTarefa status, DateTime previstaPara, DateTime? concluidaEm)
     {
         Id = id ?? Guid.NewGuid().ToString();
         UsuarioId = usuarioId;

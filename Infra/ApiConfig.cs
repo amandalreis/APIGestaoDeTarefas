@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using System.Text;
 using Domain.Entities;
 using Domain.Intefaces.Repositories;
